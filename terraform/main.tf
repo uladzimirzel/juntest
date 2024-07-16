@@ -33,7 +33,7 @@ resource "yandex_compute_instance" "default" {
   }
 
   metadata = {
-    foo      = "test"
+    foo      = "jenkins"
   }
 }
 
