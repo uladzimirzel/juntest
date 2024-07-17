@@ -1,6 +1,6 @@
 provider "yandex" {
   zone = "ru-central1-a"
-  service_account_key_file = "/root/authorized_key.json"
+  service_account_key_file = "~/authorized_key.json"
   cloud_id = "b1g5ek2k5ua5ljdio8qp"
   folder_id = "b1ghe4idec5s333glntf"
 }
@@ -31,10 +31,6 @@ resource "yandex_compute_instance" "vm-1" {
   network_interface {
     subnet_id = "${yandex_vpc_subnet.default-ru-central1-a.id}"
     nat       = true
-  }
-
-  metadata = {
-    ssh-keys = "root:${file(".ssh/id_rsa.pub")}"
   }
 }
 
