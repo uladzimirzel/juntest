@@ -9,6 +9,7 @@ pipeline {
                 sh 'apt install unzip -y'
                 sh 'apt install git -y'
                 sh 'apt install ansible -y'
+                sh 'apt install docker -y'
                 sh 'docker cp /home/jenkins/key.json jenkins:/root'
             }
         }
