@@ -15,8 +15,25 @@ resource "yandex_vpc_subnet" "test-subnet-a" {
   network_id     = yandex_vpc_network.test-vpc.id
 }
 
-resource "yandex_vpc_subnet" "test-subnet-b" {
-  name           = "test-subnet-b"
-  v4_cidr_blocks = ["10.147.0.0/24"]
-  network_id     = yandex_vpc_network.test-vpc.id
+resource "yandex_compute_instance" "build" {
+  name        = "build"
+  platform_id = "standard-v1"
+  zone        = "ru-central1-a"
+
+  resources {
+    cores  = 2
+    memory = 2
+  }
+
+  boot_disk {
+    disk_id = "ubuntu-22-04-lts-v20230925"
+  }
+
+  network_interface {
+    subnet_id = "${yandex_vpc_subnet.test-subnet-a.id}"
+  }
+
+  metadata = {
+    ssh-keys = "root:${file("/root/.ssh/id_ed25519.pub")}"
+  }
 }
