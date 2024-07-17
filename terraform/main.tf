@@ -31,6 +31,7 @@ resource "yandex_compute_instance" "build" {
 
   network_interface {
     subnet_id = "${yandex_vpc_subnet.test-subnet-a.id}"
+    nat = true
   }
 
   metadata = {
