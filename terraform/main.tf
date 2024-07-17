@@ -26,7 +26,7 @@ resource "yandex_compute_instance" "build" {
   }
 
   boot_disk {
-    disk_id = "ubuntu-22-04-lts-v20230925"
+    disk_id = "fd80bm0rh4rkepi5ksdi"
   }
 
   network_interface {
