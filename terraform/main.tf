@@ -1,6 +1,6 @@
 provider "yandex" {
   zone                     = "ru-central1-a"
-  service_account_key_file = "/root/authorized_key.json"
+  service_account_key_file = "/root/key.json"
   cloud_id                 = "b1g5ek2k5ua5ljdio8qp"
   folder_id                = "b1ghe4idec5s333glntf"
 }
