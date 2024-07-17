@@ -1,12 +1,3 @@
-terraform {
-  required_providers {
-    yandex = {
-      source = "yandex-cloud/yandex"
-    }
-  }
-  required_version = ">= 0.13"
-}
-
 provider "yandex" {
   zone = "ru-central1-a"
   service_account_key_file = "/root/authorized_key.json"
@@ -14,33 +5,46 @@ provider "yandex" {
   folder_id = "b1ghe4idec5s333glntf"
 }
 
-resource "yandex_compute_instance" "default" {
-  name        = "test"
-  zone        = "ru-central1-a"
+resource "yandex_compute_disk" "boot-disk" {
+  name     = "boot-disk"
+  type     = "network-ssd"
+  zone     = "ru-central1-a"
+  size     = "15"
+  image_id = "fd8t24r7o6m7fdvlp47l"
+}
+
+resource "yandex_compute_instance" "vm-1" {
+  name                      = "linux-vm"
+  allow_stopping_for_update = true
+  platform_id               = "standard-v1"
+  zone                      = "ru-central1-a"
 
   resources {
-    cores  = 2
-    memory = 4
+    cores  = "2"
+    memory = "2"
   }
 
   boot_disk {
-    disk_id = "fhmj7ukjjg1do55f0q3b"
+    disk_id = yandex_compute_disk.boot-disk.id
   }
 
   network_interface {
-    index  = 1
-    subnet_id = "e9bhb3jm9i37q62jjqbj"
+    subnet_id = "${yandex_vpc_subnet.default-ru-central1-a.id}"
+    nat       = true
   }
 
   metadata = {
-    foo      = "jenkins"
+    ssh-keys = "root:${file(".ssh/id_rsa.pub")}"
   }
 }
 
-resource "yandex_vpc_network" "foo" {}
+resource "yandex_vpc_network" "default" {
+  name = "default"
+}
 
-resource "yandex_vpc_subnet" "foo" {
+resource "yandex_vpc_subnet" "default-ru-central1-a" {
+  name           = "default-ru-central1-a"
   zone           = "ru-central1-a"
-  network_id     = "e9bhb3jm9i37q62jjqbj"
   v4_cidr_blocks = ["10.128.0.0/24"]
+  network_id     = "${yandex_vpc_network.default.id}"
 }
