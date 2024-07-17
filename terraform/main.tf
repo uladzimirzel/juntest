@@ -10,6 +10,13 @@ resource "yandex_vpc_network" "test-vpc" {
 }
 
 resource "yandex_vpc_subnet" "test-subnet-a" {
-  network_id = "${yandex_vpc_network.test-vpc.id}"
-  v4_cidr_block = ["10.145.0.0/24"]
+  name           = "test-subnet-a"
+  v4_cidr_blocks = ["10.146.0.0/24"]
+  network_id     = yandex_vpc_network.test-vpc.id
+}
+
+resource "yandex_vpc_subnet" "test-subnet-b" {
+  name           = "test-subnet-b"
+  v4_cidr_blocks = ["10.147.0.0/24"]
+  network_id     = yandex_vpc_network.test-vpc.id
 }
