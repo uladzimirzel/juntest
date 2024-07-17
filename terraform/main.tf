@@ -26,7 +26,9 @@ resource "yandex_compute_instance" "build" {
   }
 
   boot_disk {
-    disk_id = "fd80bm0rh4rkepi5ksdi"
+    initialize_params {
+      disk_id = "fd80bm0rh4rkepi5ksdi"
+    }
   }
 
   network_interface {
