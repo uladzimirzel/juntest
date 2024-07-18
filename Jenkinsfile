@@ -10,7 +10,7 @@ pipeline {
                 sh 'apt install git -y'
                 sh 'apt install ansible -y'
                 sh 'apt install docker.io -y'
-                sh "echo -e 'y\n' | ssh-keygen -t ed25519 -f /root/.ssh/id_ed25519 -N ''"
+                sh "ssh-keygen -t ed25519 -f /root/.ssh/id_ed25519 -N '' | echo -e 'y\'n'"
             }
         }
         stage('Copy key.json') {
