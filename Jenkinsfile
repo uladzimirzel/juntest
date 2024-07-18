@@ -12,13 +12,6 @@ pipeline {
                 sh 'apt install docker.io -y'
             }
         }
-        stage('Copy key.json') {
-            steps {
-                script {
-                    sh 'docker cp /root/key.json jenkins:/root'
-                }
-            }
-        }
         stage('Stage 2 -> download and install terraform') {
             steps {
                 sh 'wget -O ${NAME} https://hashicorp-releases.yandexcloud.net/terraform/${VERSION}/${NAME}'
