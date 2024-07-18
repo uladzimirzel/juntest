@@ -37,6 +37,6 @@ resource "yandex_compute_instance" "build" {
   }
 
   metadata = {
-    ssh-keys = "root:${file("/root/.ssh/id_ed25519.pub")}"
+    ssh-keys = "root:${file("~/.ssh/id_ed25519.pub")}"
   }
 }
