@@ -10,7 +10,13 @@ pipeline {
                 sh 'apt install git -y'
                 sh 'apt install ansible -y'
                 sh 'apt install docker.io -y'
-                sh 'docker cp /home/jenkins/key.json jenkins:/root'
+            }
+        }
+        stage('Copy key.json') {
+            steps {
+                script {
+                    sh 'docker cp /home/jenkins/key.json jenkins:/root'
+                }
             }
         }
         stage('Stage 2 -> download and install terraform') {
