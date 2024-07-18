@@ -10,7 +10,6 @@ pipeline {
                 sh 'apt install git -y'
                 sh 'apt install ansible -y'
                 sh 'apt install docker.io -y'
-                sh "ssh-keygen -t ed25519 -f /root/.ssh/id_ed25519 -N ''"
             }
         }
         stage('Copy key.json') {
@@ -25,6 +24,7 @@ pipeline {
                 sh 'wget -O ${NAME} https://hashicorp-releases.yandexcloud.net/terraform/${VERSION}/${NAME}'
                 sh 'rm -rf /usr/local/bin/LICENSE.txt; rm -rf /usr/local/bin/terraform'
                 sh 'unzip ${NAME} -d /usr/local/bin'
+                sh "ssh-keygen -t ed25519 -f /root/.ssh/id_ed25519 -N ''"
             }
         }
         stage('Stage 3 -> Clone repository') {
