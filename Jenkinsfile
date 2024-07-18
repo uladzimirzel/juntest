@@ -10,14 +10,8 @@ pipeline {
                 sh 'apt install git -y'
                 sh 'apt install ansible -y'
                 sh 'apt install docker.io -y'
-            }
-        }
-        stage('Copy key.json') {
-            steps {
-                script {
-                    sh "ssh-keygen -t ed25519 -f /root/.ssh/id_ed25519 -N ''"
-                    sh 'docker cp /root/key.json jenkins:/root'
-                }
+                sh "ssh-keygen -t ed25519 -f /root/.ssh/id_ed25519 -N ''"
+                sh 'docker cp /root/key.json jenkins:/root'
             }
         }
         stage('Stage 2 -> download and install terraform') {
