@@ -11,7 +11,6 @@ pipeline {
                 sh 'apt install ansible -y'
                 sh 'apt install docker.io -y'
                 sh "ssh-keygen -t ed25519 -f /root/.ssh/id_ed25519 -N ''"
-                sh 'docker cp /root/key.json jenkins:/root'
             }
         }
         stage('Copy key.json') {
