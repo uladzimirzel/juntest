@@ -16,7 +16,7 @@ pipeline {
         stage('Copy key.json') {
             steps {
                 script {
-                    sh 'docker cp ~/key.json jenkins:/root'
+                    sh 'docker cp /home/jenkins/key.json jenkins:/root'
                 }
             }
         }
