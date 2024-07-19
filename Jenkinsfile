@@ -24,7 +24,6 @@ pipeline {
         stage('Stage 3 -> Run terraform and create instance') {
             steps {
                 dir('terraform') {
-                    sh 'mv .terraformrc ~/'
                     sh 'terraform destroy -auto-approve'
                     sh 'terraform init'
                     sh 'terraform apply -auto-approve'
