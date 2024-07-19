@@ -16,7 +16,7 @@ pipeline {
                 sh 'wget -O ${NAME} https://hashicorp-releases.yandexcloud.net/terraform/${VERSION}/${NAME}'
                 sh 'rm -rf /usr/local/bin/LICENSE.txt; rm -rf /usr/local/bin/terraform'
                 sh 'unzip ${NAME} -d /usr/local/bin'
-                sh 'mv /var/jenkins_home/workspace/Install_Terraform/.terraformrc  ~/'
+                sh 'mv /var/jenkins_home/workspace/Install_Terraform/terraform/.terraformrc  ~/'
                 sh 'rm -rf /root/.ssh/id_ed25519 && rm -rf /root/.ssh/id_ed25519.pub'
                 sh "ssh-keygen -t ed25519 -f /root/.ssh/id_ed25519 -N ''"
             }
