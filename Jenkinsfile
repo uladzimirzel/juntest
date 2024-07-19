@@ -7,7 +7,6 @@ pipeline {
                 sh 'apt update -y'
                 sh 'apt install wget -y'
                 sh 'apt install unzip -y'
-                sh 'apt install git -y'
                 sh 'apt install ansible -y'
                 sh 'apt install docker.io -y'
             }
