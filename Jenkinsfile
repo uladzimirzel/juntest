@@ -21,13 +21,7 @@ pipeline {
                 sh "ssh-keygen -t ed25519 -f /root/.ssh/id_ed25519 -N ''"
             }
         }
-        stage('Stage 3 -> Clone repository') {
-            steps {
-                sh 'rm -rf ~/repository'
-                sh 'git clone https://github.com/uladzimirzel/juntest ~/repository'
-            }
-        }
-        stage('Stage 4 -> Run terraform and create instance') {
+        stage('Stage 3 -> Run terraform and create instance') {
             steps {
                 dir('terraform') {
                     sh 'mv .terraformrc ~/'
