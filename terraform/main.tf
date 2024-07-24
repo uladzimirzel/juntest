@@ -42,7 +42,7 @@ resource "yandex_compute_instance" "build" {
 }
 
 resource "yandex_compute_instance" "prod" {
-  name        = "build"
+  name        = "prod"
   platform_id = "standard-v1"
   zone        = "ru-central1-a"
 
