@@ -4,8 +4,7 @@
   gather_facts: yes
 
   vars:
-    var_files:
-      - var.yml
+    user: ubuntu
   
   tasks:
     - name: Install git
