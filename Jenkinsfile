@@ -32,12 +32,20 @@ pipeline {
                 }
             }
         }
-        stage('Stage 4 -> Run ansible-playbook') {
+        stage('Stage 4 -> Make inventory.ini') {
             steps {
                 dir('python') {
                     sh 'python3 create_inventory.py'
                 }
             }
         }
+        stage('Stage 5 -> Run ansible playbook') {
+            steps {
+                dir('ansible') {
+                    sh 'playbook.yml'
+                }
+            }
+        }
+        
     }
 }
