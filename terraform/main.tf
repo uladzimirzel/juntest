@@ -39,9 +39,9 @@ resource "yandex_compute_instance" "build" {
   metadata = {
     ssh-keys = "root:${file("/root/.ssh/id_ed25519.pub")}"
   }
-
-  resource "yandex_compute_instance" "build" {
-  name        = "build"
+}
+  resource "yandex_compute_instance" "prod" {
+  name        = "prod"
   platform_id = "standard-v1"
   zone        = "ru-central1-a"
 
