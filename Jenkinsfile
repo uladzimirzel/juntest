@@ -9,6 +9,8 @@ pipeline {
                 sh 'apt install unzip -y'
                 sh 'apt install ansible -y'
                 sh 'apt install docker.io -y'
+                sh 'apt install python3 -y'
+                sh 'apt install nano -y'
             }
         }
         stage('Stage 2 -> download and install terraform') {
@@ -32,8 +34,8 @@ pipeline {
         }
         stage('Stage 4 -> Run ansible-playbook') {
             steps {
-                dir('ansible') {
-                    sh 'ansible-playbook playbook.yml'
+                dir('python') {
+                    sh 'python3 create_inventory.py'
                 }
             }
         }
