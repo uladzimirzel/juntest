@@ -1,6 +1,6 @@
 import json
 
-with open('terraform.tfstate', 'r', encoding='utf-8') as file:
+with open('/var/jenkins_home/workspace/Install_Terraform/terraform/terraform.tfstate', 'r', encoding='utf-8') as file:
     test_dict = json.load(file)
 
 inventory = open("inventory.ini", "w+")
