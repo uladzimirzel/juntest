@@ -69,7 +69,6 @@
   gather_facts: yes
   
   tasks:
-    - name: Install git
-      apt:
-        name: git
-        state: present
+    - name: Create test.txt
+      shell:
+          "touch test.txt /home/ubuntu/"
