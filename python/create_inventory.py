@@ -3,7 +3,7 @@ import json
 with open('/var/jenkins_home/workspace/Install_Terraform/terraform/terraform.tfstate', 'r', encoding='utf-8') as file:
     test_dict = json.load(file)
 
-inventory = open("inventory.ini", "w+")
+inventory = open("/var/jenkins_home/workspace/Install_Terraform/ansible/inventory.ini", "w+")
 inventory.write('[webservers]' + '\n')
 
 count = 0
