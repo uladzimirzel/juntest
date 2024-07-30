@@ -4,14 +4,5 @@
   gather_facts: yes
   
   roles:
-    - docker
-
-- name: Prod
-  hosts: prod
-  become: true
-  gather_facts: yes
-  
-  tasks:
-    - name: Create test.txt
-      shell:
-          "touch test.txt /home/ubuntu/"
+    - dependence
+    - building

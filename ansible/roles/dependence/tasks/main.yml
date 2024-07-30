@@ -3,13 +3,6 @@
     name: git
     state: present
 
-- name: Copy repository
-  git:
-    repo: https://github.com/uladzimirzel/juntest
-    dest: /home/ubuntu/test2
-    clone: yes
-    update: yes
-
 - name: Install Docker and docker-compose from host
   apt:
     name:
